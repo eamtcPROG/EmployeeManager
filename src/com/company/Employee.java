@@ -1,15 +1,11 @@
 package com.company;
 
 public class Employee {
-    public int id;
     public String nume;
     public String prenume;
     public String idnp;
     public String gen;
 
-    public void setId(int pId){
-        id = pId;
-    }
     public void setNume(String pNume){
         nume = pNume;
     }
@@ -23,9 +19,7 @@ public class Employee {
         gen = pGen;
     }
 
-    public int getId(){
-        return this.id;
-    }
+
     public String getNume(){
         return this.nume;
     }
