@@ -18,7 +18,13 @@ public class Main {
 		System.out.println("\t\t\t--------------------- 4 - View    -----------------------------");
 		System.out.println("\t\t\t--------------------- 5 - Exit    -----------------------------");
 	}
-
+	public static void ShowMeniu2(){
+		System.out.println("\t\t\t-----------------------------Meniu-----------------------------");
+		System.out.println("\t\t\t--------------------- 1 - Edit nume     ----------------------------");
+		System.out.println("\t\t\t--------------------- 2 - Edit prenume    --------------------------");
+		System.out.println("\t\t\t--------------------- 3 - Edit idnp   -------------------------------");
+		System.out.println("\t\t\t--------------------- 4 - Edit gen    ----------------------------");
+	}
     public static void main(String[] args) {
 		EmployeeManager employeeManager = new EmployeeManager();
 		ArrayList employeeList = new ArrayList();
@@ -53,18 +59,48 @@ public class Main {
 					case '2': {
 						clearScreen();
 						System.out.println("Edit");
-						System.out.println("Enter nr:");
+						System.out.println("Enter nr employee:");
 						id = scan.nextInt();
-						System.out.println("Enter nume:");
+						ShowMeniu2();
+						input = scan.next().charAt(0);
 						scan.nextLine();
-						nume = scan.nextLine();
-						System.out.println("Enter prenume:");
-						prenume = scan.nextLine();
-						System.out.println("Enter idnp:");
-						idnp = scan.nextLine();
-						System.out.println("Enter gen:");
-						gen = scan.nextLine();
-						employeeManager.Edit(employeeList, id, nume, prenume, idnp, gen);
+						switch (input) {
+							case '1':{
+								clearScreen();
+								System.out.println("Enter nume:");
+								nume = scan.nextLine();
+								employeeManager.EditNume(employeeList, id, nume);
+								break;
+							}
+							case '2':{
+								clearScreen();
+								System.out.println("Enter prenume:");
+								prenume = scan.nextLine();
+								employeeManager.EditPrenume(employeeList, id,prenume);
+								break;
+							}
+							case '3':{
+								clearScreen();
+								System.out.println("Enter idnp:");
+								idnp = scan.nextLine();
+								employeeManager.EditIdnp(employeeList, id,idnp);
+								break;
+							}
+							case '4':{
+								clearScreen();
+								System.out.println("Enter gen:");
+								gen = scan.nextLine();
+								employeeManager.EditGen(employeeList, id,gen);
+								break;
+							}
+							default: {
+								clearScreen();
+								System.out.print("Enter 1|2|3|4|5 only");
+							}
+						}
+
+						//scan.nextLine();
+
 						break;
 					}
 					case '3': {

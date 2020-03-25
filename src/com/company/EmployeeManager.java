@@ -13,12 +13,24 @@ public class EmployeeManager {
         em.setGen(gen);
         employeeList.add(em);
     }
-    public void Edit(ArrayList employeeList,int id,String nume,String prenume,String idnp, String gen ) {
+    public void EditGen(ArrayList employeeList,int id, String gen) {
+        Employee em = (Employee) employeeList.get(id);
+        em.setGen(gen);
+        employeeList.set(id,em);
+    }
+    public void EditNume(ArrayList employeeList,int id,String nume) {
         Employee em = (Employee) employeeList.get(id);
         em.setNume(nume);
+        employeeList.set(id,em);
+    }
+    public void EditPrenume(ArrayList employeeList,int id,String prenume) {
+        Employee em = (Employee) employeeList.get(id);
         em.setPrenume(prenume);
+        employeeList.set(id,em);
+    }
+    public void EditIdnp(ArrayList employeeList,int id,String idnp) {
+        Employee em = (Employee) employeeList.get(id);
         em.setIdnp(idnp);
-        em.setGen(gen);
         employeeList.set(id,em);
     }
     public void Delete(ArrayList employeeList,int id){
