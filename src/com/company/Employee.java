@@ -1,10 +1,10 @@
 package com.company;
 
 public class Employee {
-    public String nume;
-    public String prenume;
-    public String idnp;
-    public String gen;
+    private String nume;
+    private String prenume;
+    private String idnp;
+    private String gen;
 
     public void setNume(String pNume){
         nume = pNume;

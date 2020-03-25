@@ -59,7 +59,7 @@ public class Main {
 					case '2': {
 						clearScreen();
 						System.out.println("Edit");
-						System.out.println("Enter nr employee:");
+						System.out.println("Enter nr:");
 						id = scan.nextInt();
 						ShowMeniu2();
 						input = scan.next().charAt(0);
