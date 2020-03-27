@@ -28,30 +28,35 @@ public class Main {
 	public static  Gender selectGender(){
 		Gender gen = null;
 		Scanner scan = new Scanner(System.in);
-		char input;
-		System.out.println("\t\t\t-----------------------------Meniu-----------------------------");
-		System.out.println("\t\t\t--------------------- 1 - Select masculin     ----------------------------");
-		System.out.println("\t\t\t--------------------- 2 - Select femenin    --------------------------");
-		System.out.println("\t\t\t--------------------- 3 - Select other   -------------------------------");
-		input = scan.next().charAt(0);
-		switch (input) {
-			case '1': {
-				gen = Gender.masculin;
-				break;
+		char input;int finish =0;
+		do {
+			System.out.println("\t\t\t-----------------------------Meniu-----------------------------");
+			System.out.println("\t\t\t--------------------- 1 - Select masculin     ----------------------------");
+			System.out.println("\t\t\t--------------------- 2 - Select femenin    --------------------------");
+			System.out.println("\t\t\t--------------------- 3 - Select other   -------------------------------");
+			input = scan.next().charAt(0);
+			switch (input) {
+				case '1': {
+					gen = Gender.masculin;
+					finish = 1;
+					break;
+				}
+				case '2': {
+					gen = Gender.femenin;
+					finish = 1;
+					break;
+				}
+				case '3': {
+					gen = Gender.other;
+					finish = 1;
+					break;
+				}
+				default: {
+					clearScreen();
+					System.out.println("Enter 1|2|3 only");
+				}
 			}
-			case '2': {
-				gen = Gender.femenin;
-				break;
-			}
-			case '3': {
-				gen = Gender.other;
-				break;
-			}
-			default:{
-				clearScreen();
-				System.out.print("Enter 1|2|3 only");
-			}
-			}
+		}while (finish != 1);
 		return gen;
 	}
     public static void main(String[] args) {
@@ -123,7 +128,7 @@ public class Main {
 							}
 							default: {
 								clearScreen();
-								System.out.print("Enter 1|2|3|4|5 only");
+								System.out.println("Enter 1|2|3|4|5 only");
 							}
 						}
 
@@ -153,13 +158,13 @@ public class Main {
 					}
 					default: {
 						clearScreen();
-						System.out.print("Enter 1|2|3|4|5 only");
+						System.out.println("Enter 1|2|3|4|5 only");
 					}
 				}
 
 			} while (finish != 1);
 		}catch (Exception e){
-			System.out.print("Error");
+			System.out.println("Error");
 		}
     }
 }
