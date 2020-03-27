@@ -4,7 +4,7 @@ public class Employee {
     private String nume;
     private String prenume;
     private String idnp;
-    private String gen;
+    private Gender gen;
 
     public void setNume(String pNume){
         nume = pNume;
@@ -15,7 +15,7 @@ public class Employee {
     public void setIdnp(String pidnp){
         idnp = pidnp;
     }
-    public void setGen(String pGen){
+    public void setGen(Gender pGen){
         gen = pGen;
     }
 
@@ -29,7 +29,8 @@ public class Employee {
     public String getIdnp(){
         return this.idnp;
     }
-    public String getGen(){
+    public Gender getGen(){
         return this.gen;
     }
 }
+

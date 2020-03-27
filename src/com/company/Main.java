@@ -10,7 +10,7 @@ public class Main {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
 	}
-	public static void ShowMeniu(){
+	public static void showMeniu(){
 		System.out.println("\t\t\t-----------------------------Meniu-----------------------------");
 		System.out.println("\t\t\t--------------------- 1 - Add     -----------------------------");
 		System.out.println("\t\t\t--------------------- 2 - Edit    -----------------------------");
@@ -18,12 +18,41 @@ public class Main {
 		System.out.println("\t\t\t--------------------- 4 - View    -----------------------------");
 		System.out.println("\t\t\t--------------------- 5 - Exit    -----------------------------");
 	}
-	public static void ShowMeniu2(){
+	public static void showMeniu2(){
 		System.out.println("\t\t\t-----------------------------Meniu-----------------------------");
 		System.out.println("\t\t\t--------------------- 1 - Edit nume     ----------------------------");
 		System.out.println("\t\t\t--------------------- 2 - Edit prenume    --------------------------");
 		System.out.println("\t\t\t--------------------- 3 - Edit idnp   -------------------------------");
 		System.out.println("\t\t\t--------------------- 4 - Edit gen    ----------------------------");
+	}
+	public static  Gender selectGender(){
+		Gender gen = null;
+		Scanner scan = new Scanner(System.in);
+		char input;
+		System.out.println("\t\t\t-----------------------------Meniu-----------------------------");
+		System.out.println("\t\t\t--------------------- 1 - Select masculin     ----------------------------");
+		System.out.println("\t\t\t--------------------- 2 - Select femenin    --------------------------");
+		System.out.println("\t\t\t--------------------- 3 - Select other   -------------------------------");
+		input = scan.next().charAt(0);
+		switch (input) {
+			case '1': {
+				gen = Gender.masculin;
+				break;
+			}
+			case '2': {
+				gen = Gender.femenin;
+				break;
+			}
+			case '3': {
+				gen = Gender.other;
+				break;
+			}
+			default:{
+				clearScreen();
+				System.out.print("Enter 1|2|3 only");
+			}
+			}
+		return gen;
 	}
     public static void main(String[] args) {
 		EmployeeManager employeeManager = new EmployeeManager();
@@ -31,11 +60,11 @@ public class Main {
 		Scanner scan = new Scanner(System.in);
 		byte finish = 0;
 		char input;
-		int id =0 ; String nume,prenume,idnp,gen;
+		int id =0 ; String nume,prenume,idnp; Gender gen;
 		try {
 			do {
 				clearScreen();
-				ShowMeniu();
+				showMeniu();
 				input = scan.next().charAt(0);
 				switch (input) {
 					case '1': {
@@ -50,18 +79,17 @@ public class Main {
 						prenume = scan.nextLine();
 						System.out.println("Enter idnp:");
 						idnp = scan.nextLine();
-						System.out.println("Enter gen:");
-						gen = scan.nextLine();
-
+						System.out.println("Select Gen:");
+						gen = selectGender();
 						employeeManager.Add(employeeList, nume, prenume, idnp, gen);
 						break;
 					}
 					case '2': {
 						clearScreen();
 						System.out.println("Edit");
-						System.out.println("Enter nr:");
+						System.out.println("Enter nr employee:");
 						id = scan.nextInt();
-						ShowMeniu2();
+						showMeniu2();
 						input = scan.next().charAt(0);
 						scan.nextLine();
 						switch (input) {
@@ -88,8 +116,8 @@ public class Main {
 							}
 							case '4':{
 								clearScreen();
-								System.out.println("Enter gen:");
-								gen = scan.nextLine();
+								System.out.println("Select Gen:");
+								gen = selectGender();
 								employeeManager.EditGen(employeeList, id,gen);
 								break;
 							}
@@ -106,7 +134,7 @@ public class Main {
 					case '3': {
 						clearScreen();
 						System.out.println("Delete");
-						System.out.println("Enter nr:");
+						System.out.println("Enter nr employee:");
 						id = scan.nextInt();
 						employeeManager.Delete(employeeList, id);
 						break;
