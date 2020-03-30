@@ -50,4 +50,80 @@ public class EmployeeManager {
            System.out.println("|--------------------------------------------------------------------------|");
        }
     }
+    public void SearchName(ArrayList employeeList,String pnume){
+        System.out.println("| Nr |      Nume      |      Prenume      |      Idnp      |      Gen      |");
+        System.out.println("|--------------------------------------------------------------------------|");
+        String nume;
+        String prenume;
+        String idnp;
+        Gender gen;
+        for (int i = 0;i< employeeList.size();i++){
+                Employee em = (Employee) employeeList.get(i);
+                nume = em.getNume();
+                prenume = em.getPrenume();
+                idnp = em.getIdnp();
+                gen = em.getGen();
+            if(pnume.equals(nume)) {
+                System.out.println("| " + i + " | " + nume + " | " + prenume + " | " + idnp + " | " + gen + " |");
+                System.out.println("|--------------------------------------------------------------------------|");
+            }
+        }
+    }
+    public void SearchPrenume(ArrayList employeeList,String pnume){
+        System.out.println("| Nr |      Nume      |      Prenume      |      Idnp      |      Gen      |");
+        System.out.println("|--------------------------------------------------------------------------|");
+        String nume;
+        String prenume;
+        String idnp;
+        Gender gen;
+        for (int i = 0;i< employeeList.size();i++){
+            Employee em = (Employee) employeeList.get(i);
+            nume = em.getNume();
+            prenume = em.getPrenume();
+            idnp = em.getIdnp();
+            gen = em.getGen();
+            if(pnume.equals(prenume)) {
+                System.out.println("| " + i + " | " + nume + " | " + prenume + " | " + idnp + " | " + gen + " |");
+                System.out.println("|--------------------------------------------------------------------------|");
+            }
+        }
+    }
+    public void SearchIdnp(ArrayList employeeList,String pnume){
+        System.out.println("| Nr |      Nume      |      Prenume      |      Idnp      |      Gen      |");
+        System.out.println("|--------------------------------------------------------------------------|");
+        String nume;
+        String prenume;
+        String idnp;
+        Gender gen;
+        for (int i = 0;i< employeeList.size();i++){
+            Employee em = (Employee) employeeList.get(i);
+            nume = em.getNume();
+            prenume = em.getPrenume();
+            idnp = em.getIdnp();
+            gen = em.getGen();
+            if(pnume.equals(idnp)) {
+                System.out.println("| " + i + " | " + nume + " | " + prenume + " | " + idnp + " | " + gen + " |");
+                System.out.println("|--------------------------------------------------------------------------|");
+            }
+        }
+    }
+    public void SearchGen(ArrayList employeeList,Gender pnume){
+        System.out.println("| Nr |      Nume      |      Prenume      |      Idnp      |      Gen      |");
+        System.out.println("|--------------------------------------------------------------------------|");
+        String nume;
+        String prenume;
+        String idnp;
+        Gender gen;
+        for (int i = 0;i< employeeList.size();i++){
+            Employee em = (Employee) employeeList.get(i);
+            nume = em.getNume();
+            prenume = em.getPrenume();
+            idnp = em.getIdnp();
+            gen = em.getGen();
+            if(pnume.equals(gen)) {
+                System.out.println("| " + i + " | " + nume + " | " + prenume + " | " + idnp + " | " + gen + " |");
+                System.out.println("|--------------------------------------------------------------------------|");
+            }
+        }
+    }
 }

@@ -16,7 +16,8 @@ public class Main {
 		System.out.println("\t\t\t--------------------- 2 - Edit    -----------------------------");
 		System.out.println("\t\t\t--------------------- 3 - Delete  -----------------------------");
 		System.out.println("\t\t\t--------------------- 4 - View    -----------------------------");
-		System.out.println("\t\t\t--------------------- 5 - Exit    -----------------------------");
+		System.out.println("\t\t\t--------------------- 5 - Search  -----------------------------");
+		System.out.println("\t\t\t--------------------- 6 - Exit    -----------------------------");
 	}
 	public static void showMeniu2(){
 		System.out.println("\t\t\t-----------------------------Meniu-----------------------------");
@@ -59,6 +60,61 @@ public class Main {
 		}while (finish != 1);
 		return gen;
 	}
+	public static void search(EmployeeManager employeeManager,ArrayList employeeList){
+
+		Scanner scan = new Scanner(System.in);
+		char input;int finish =0;
+
+			System.out.println("\t\t\t-----------------------------Meniu-----------------------------");
+			System.out.println("\t\t\t--------------------- 1 - Search by nume    -------------------------------");
+			System.out.println("\t\t\t--------------------- 2 - Search by prenume      --------------------------");
+			System.out.println("\t\t\t--------------------- 3 - Search by idnp    -------------------------------");
+			System.out.println("\t\t\t--------------------- 4 - Search by gen     -------------------------------");
+			input = scan.next().charAt(0);
+			do {
+			switch (input) {
+				case '1': {
+					System.out.println("Enter nume: ");
+					scan.nextLine();
+					String pnume = scan.nextLine();
+					System.out.println(pnume);
+					employeeManager.SearchName(employeeList,pnume);
+					finish = 1;
+					break;
+				}
+				case '2': {
+					System.out.println("Enter prenume: ");
+					scan.nextLine();
+					String pnume = scan.nextLine();
+					System.out.println(pnume);
+					employeeManager.SearchPrenume(employeeList,pnume);
+					finish = 1;
+					break;
+				}
+				case '3': {
+					System.out.println("Enter idnp: ");
+					scan.nextLine();
+					String pnume = scan.nextLine();
+					System.out.println(pnume);
+					employeeManager.SearchIdnp(employeeList,pnume);
+					finish = 1;
+					break;
+				}
+				case '4': {
+					System.out.println("Enter gen: ");
+					Gender pnume = selectGender();
+					System.out.println(pnume);
+					employeeManager.SearchGen(employeeList,pnume);
+					finish = 1;
+					break;
+				}
+				default: {
+					clearScreen();
+					System.out.println("Enter 1|2|3 only");
+				}
+			}
+			}while (finish != 1);
+	}
     public static void main(String[] args) {
 		EmployeeManager employeeManager = new EmployeeManager();
 		ArrayList employeeList = new ArrayList();
@@ -75,8 +131,6 @@ public class Main {
 					case '1': {
 						clearScreen();
 						System.out.println("Add");
-						//System.out.println("Enter id:");
-
 						System.out.println("Enter nume:");
 						scan.nextLine();
 						nume = scan.nextLine();
@@ -151,6 +205,12 @@ public class Main {
 						break;
 					}
 					case '5': {
+						clearScreen();
+						System.out.println("Search");
+						search(employeeManager,employeeList);
+						break;
+					}
+					case '6': {
 						clearScreen();
 						System.out.println("Exit");
 						finish = 1;
