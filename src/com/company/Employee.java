@@ -1,6 +1,6 @@
 package com.company;
 
-public class Employee {
+public class Employee  {
     private String nume;
     private String prenume;
     private String idnp;
@@ -32,5 +32,6 @@ public class Employee {
     public Gender getGen(){
         return this.gen;
     }
+
 }
 

@@ -17,7 +17,8 @@ public class Main {
 		System.out.println("\t\t\t--------------------- 3 - Delete  -----------------------------");
 		System.out.println("\t\t\t--------------------- 4 - View    -----------------------------");
 		System.out.println("\t\t\t--------------------- 5 - Search  -----------------------------");
-		System.out.println("\t\t\t--------------------- 6 - Exit    -----------------------------");
+		System.out.println("\t\t\t--------------------- 6 - Sort    -----------------------------");
+		System.out.println("\t\t\t--------------------- 7 - Exit    -----------------------------");
 	}
 	public static void showMeniu2(){
 		System.out.println("\t\t\t-----------------------------Meniu-----------------------------");
@@ -60,6 +61,47 @@ public class Main {
 		}while (finish != 1);
 		return gen;
 	}
+	public static void sort(EmployeeManager employeeManager,ArrayList employeeList){
+
+		Scanner scan = new Scanner(System.in);
+		char input;int finish =0;
+
+		System.out.println("\t\t\t-----------------------------Meniu-----------------------------");
+		System.out.println("\t\t\t--------------------- 1 - Sort by nume    -------------------------------");
+		System.out.println("\t\t\t--------------------- 2 - Sort by prenume      --------------------------");
+		System.out.println("\t\t\t--------------------- 3 - Sort by idnp    -------------------------------");
+		input = scan.next().charAt(0);
+		do {
+			switch (input) {
+				case '1': {
+					System.out.println("Sort by nume");
+					scan.nextLine();
+					employeeManager.sortListByNume(employeeList);
+					finish = 1;
+					break;
+				}
+				case '2': {
+					System.out.println("Sort by prenume");
+					scan.nextLine();
+					employeeManager.sortListByPrenume(employeeList);
+					finish = 1;
+					break;
+				}
+				case '3': {
+					System.out.println("Sort by idnp");
+					scan.nextLine();
+					employeeManager.sortListByIdnp(employeeList);
+					finish = 1;
+					break;
+				}
+				default: {
+					clearScreen();
+					System.out.println("Enter 1|2|3 only");
+				}
+			}
+		}while (finish != 1);
+	}
+
 	public static void search(EmployeeManager employeeManager,ArrayList employeeList){
 
 		Scanner scan = new Scanner(System.in);
@@ -78,7 +120,7 @@ public class Main {
 					scan.nextLine();
 					String pnume = scan.nextLine();
 					System.out.println(pnume);
-					employeeManager.SearchName(employeeList,pnume);
+					employeeManager.searchName(employeeList,pnume);
 					finish = 1;
 					break;
 				}
@@ -87,7 +129,7 @@ public class Main {
 					scan.nextLine();
 					String pnume = scan.nextLine();
 					System.out.println(pnume);
-					employeeManager.SearchPrenume(employeeList,pnume);
+					employeeManager.searchPrenume(employeeList,pnume);
 					finish = 1;
 					break;
 				}
@@ -96,7 +138,7 @@ public class Main {
 					scan.nextLine();
 					String pnume = scan.nextLine();
 					System.out.println(pnume);
-					employeeManager.SearchIdnp(employeeList,pnume);
+					employeeManager.searchIdnp(employeeList,pnume);
 					finish = 1;
 					break;
 				}
@@ -104,7 +146,7 @@ public class Main {
 					System.out.println("Enter gen: ");
 					Gender pnume = selectGender();
 					System.out.println(pnume);
-					employeeManager.SearchGen(employeeList,pnume);
+					employeeManager.searchGen(employeeList,pnume);
 					finish = 1;
 					break;
 				}
@@ -115,6 +157,7 @@ public class Main {
 			}
 			}while (finish != 1);
 	}
+
     public static void main(String[] args) {
 		EmployeeManager employeeManager = new EmployeeManager();
 		ArrayList employeeList = new ArrayList();
@@ -140,7 +183,7 @@ public class Main {
 						idnp = scan.nextLine();
 						System.out.println("Select Gen:");
 						gen = selectGender();
-						employeeManager.Add(employeeList, nume, prenume, idnp, gen);
+						employeeManager.add(employeeList, nume, prenume, idnp, gen);
 						break;
 					}
 					case '2': {
@@ -156,28 +199,28 @@ public class Main {
 								clearScreen();
 								System.out.println("Enter nume:");
 								nume = scan.nextLine();
-								employeeManager.EditNume(employeeList, id, nume);
+								employeeManager.editNume(employeeList, id, nume);
 								break;
 							}
 							case '2':{
 								clearScreen();
 								System.out.println("Enter prenume:");
 								prenume = scan.nextLine();
-								employeeManager.EditPrenume(employeeList, id,prenume);
+								employeeManager.editPrenume(employeeList, id,prenume);
 								break;
 							}
 							case '3':{
 								clearScreen();
 								System.out.println("Enter idnp:");
 								idnp = scan.nextLine();
-								employeeManager.EditIdnp(employeeList, id,idnp);
+								employeeManager.editIdnp(employeeList, id,idnp);
 								break;
 							}
 							case '4':{
 								clearScreen();
 								System.out.println("Select Gen:");
 								gen = selectGender();
-								employeeManager.EditGen(employeeList, id,gen);
+								employeeManager.editGen(employeeList, id,gen);
 								break;
 							}
 							default: {
@@ -185,9 +228,6 @@ public class Main {
 								System.out.println("Enter 1|2|3|4|5 only");
 							}
 						}
-
-						//scan.nextLine();
-
 						break;
 					}
 					case '3': {
@@ -195,13 +235,13 @@ public class Main {
 						System.out.println("Delete");
 						System.out.println("Enter nr employee:");
 						id = scan.nextInt();
-						employeeManager.Delete(employeeList, id);
+						employeeManager.delete(employeeList, id);
 						break;
 					}
 					case '4': {
 						clearScreen();
 						System.out.println("View");
-						employeeManager.View(employeeList);
+						employeeManager.view(employeeList);
 						break;
 					}
 					case '5': {
@@ -212,13 +252,19 @@ public class Main {
 					}
 					case '6': {
 						clearScreen();
+						System.out.println("Sort");
+						sort(employeeManager,employeeList);
+						break;
+					}
+					case '7': {
+						clearScreen();
 						System.out.println("Exit");
 						finish = 1;
 						break;
 					}
 					default: {
 						clearScreen();
-						System.out.println("Enter 1|2|3|4|5 only");
+						System.out.println("Enter 1|2|3|4|5|6|7 only");
 					}
 				}
 
