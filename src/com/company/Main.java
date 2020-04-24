@@ -1,6 +1,8 @@
 package com.company;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -26,6 +28,7 @@ public class Main {
 		System.out.println("\t\t\t--------------------- 2 - Edit prenume    --------------------------");
 		System.out.println("\t\t\t--------------------- 3 - Edit idnp   -------------------------------");
 		System.out.println("\t\t\t--------------------- 4 - Edit gen    ----------------------------");
+		System.out.println("\t\t\t--------------------- 5 - Edit Data nastere ----------------------------");
 	}
 	public static  Gender selectGender(){
 		Gender gen = null;
@@ -183,7 +186,10 @@ public class Main {
 						idnp = scan.nextLine();
 						System.out.println("Select Gen:");
 						gen = selectGender();
-						employeeManager.add(employeeList, nume, prenume, idnp, gen);
+						System.out.println("Enter data de nastere (yyyy-mm-dd):");
+						LocalDate date = LocalDate.parse(scan.nextLine());
+
+						employeeManager.add(employeeList, nume, prenume, idnp, gen,date);
 						break;
 					}
 					case '2': {
@@ -221,6 +227,13 @@ public class Main {
 								System.out.println("Select Gen:");
 								gen = selectGender();
 								employeeManager.editGen(employeeList, id,gen);
+								break;
+							}
+							case '5':{
+								clearScreen();
+								System.out.println("Enter data de nastere (yyyy-mm-dd):");
+								LocalDate date = LocalDate.parse(scan.nextLine());
+								employeeManager.editDataNastere(employeeList, id,date);
 								break;
 							}
 							default: {

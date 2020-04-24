@@ -1,10 +1,15 @@
 package com.company;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+
 public class Employee  {
     private String nume;
     private String prenume;
     private String idnp;
     private Gender gen;
+    private LocalDate dataNastere;
 
     public void setNume(String pNume){
         nume = pNume;
@@ -17,6 +22,9 @@ public class Employee  {
     }
     public void setGen(Gender pGen){
         gen = pGen;
+    }
+    public void setDataNastere(LocalDate pData){
+        dataNastere = pData;
     }
 
 
@@ -31,6 +39,9 @@ public class Employee  {
     }
     public Gender getGen(){
         return this.gen;
+    }
+    public LocalDate getDataNastere(){
+        return this.dataNastere;
     }
 
 }
